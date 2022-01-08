@@ -4,7 +4,7 @@ var generateBtn = document.querySelector("#generate");
 let pwChars = "";
 let charLower = "abcdefghijklmnopqrstuvwxyz";
 let charUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let charSymbol = "\"!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+let charSymbol = "\"!#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 let charNum = "1234567890";
 let pwLength;
 
@@ -12,9 +12,10 @@ let pwLength;
 // Write password to the #password input
 function writePassword() {
   
+ 
  //Set password length, looping if not within parameters
  while (true) {
-  pwLength = prompt("Password length?", "Must be between 8 and 128 characters");
+  pwLength =parseInt(prompt("Password length?", "Must be between 8 and 128 characters"));
   if (pwLength >= 8 && pwLength <= 128) {
     break;
   }
@@ -63,23 +64,25 @@ console.log(pwChars);
 }
 
 
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
- 
-}
-
-const generatePassword = (pwLength, pwChars) => {
-  let password = "";
+let generatePassword = (pwLength, pwChars) => {
+  let pw = "";
   for (let i = 0; i <= pwLength; i++) {
-    password += pwChars.charAt(
+    pw += pwChars.charAt(
       Math.floor(Math.random() * pwChars.length)
     );
   }
-  return password;
+  return pw;
   };
+
+var password = generatePassword(pwLength, pwChars);
+     
+var passwordText = document.querySelector("#password");
+
+passwordText.value = password;
+
+}
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
