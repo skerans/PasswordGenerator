@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-let pwChars = "";
+
 let charLower = "abcdefghijklmnopqrstuvwxyz";
 let charUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let charSymbol = "\"!#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
@@ -12,54 +12,58 @@ let pwLength;
 // Write password to the #password input
 function writePassword() {
 
-  pwChars = "";
-  //Set password length, looping if not within parameters
+  let pwChars = "";
+
+  //Set password length, looping if not within set parameters
   while (true) {
+
     pwLength = parseInt(prompt("Password length?", "Must be between 8 and 128 characters"));
+
     if (pwLength >= 8 && pwLength <= 128) {
+      alert(`Password will be ${pwLength} characters long.`);
       break;
     }
     alert("Password must be between 8 and 128 characters");
   }
-  alert("thank you");
+ 
 
   //Set lowercase characters or not
-  if (confirm("Use lower case?")) {
+  if (confirm("Use lowercase?")) {
     pwChars += charLower;
-    alert("lowercase added");
+    alert("Lowercase added.");
     console.log(pwChars);
   } else {
-    alert("no lower case characters")
+    alert("No lowercase characters will be added.")
     console.log(pwChars);
   }
 
   //Set uppercase characters or not
   if (confirm("Use uppercase?")) {
     pwChars += charUpper;
-    alert("uppercase added");
+    alert("Uppercase added.");
     console.log(pwChars);
   } else {
-    alert("no upper case characters")
+    alert("no uppercase characters will be added.")
     console.log(pwChars);
   }
 
   //Set symbols characters or not
   if (confirm("Use symbols?")) {
     pwChars += charSymbol;
-    alert("symbols added");
+    alert("Symbol characters will be added.");
     console.log(pwChars);
   } else {
-    alert("no symbol characters")
+    alert("No symbol characters will be added.")
     console.log(pwChars);
   }
 
   //Set number characters or not
   if (confirm("Use numbers?")) {
     pwChars += charNum;
-    alert("numbers added");
+    alert("Number characters will be added.");
     console.log(pwChars);
   } else {
-    alert("no number characters")
+    alert("No number characters will be added.")
     console.log(pwChars);
   }
 
@@ -68,22 +72,19 @@ function writePassword() {
 
     let pw = "";
     for (let i = 0; i <= pwLength; i++) {
-      pw += pwChars.charAt(
+
+      pw = pw + pwChars.charAt(
+
         Math.floor(Math.random() * pwChars.length)
       );
     }
     return pw;
   };
 
-
-
   var passwordText = document.querySelector("#password");
 
-
-
   if (pwChars.length == 0) {
-    passwordText.value = "No choices were selected";
-
+    passwordText.value = "No choices were selected, please try again.";
   } else {
     var password = generatePassword(pwLength, pwChars);
     passwordText.value = password;
