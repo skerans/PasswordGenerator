@@ -29,7 +29,7 @@ function writePassword() {
 
   //Set lowercase characters or not
   if (confirm("Use lowercase?")) {
-    pwChars += charLower;
+    pwChars = pwChars + charLower;
     alert("Lowercase added.");
     console.log(pwChars);
   } else {
@@ -39,7 +39,7 @@ function writePassword() {
 
   //Set uppercase characters or not
   if (confirm("Use uppercase?")) {
-    pwChars += charUpper;
+    pwChars = pwChars + charUpper;
     alert("Uppercase added.");
     console.log(pwChars);
   } else {
@@ -49,7 +49,7 @@ function writePassword() {
 
   //Set symbols characters or not
   if (confirm("Use symbols?")) {
-    pwChars += charSymbol;
+    pwChars = pwChars + charSymbol;
     alert("Symbol characters will be added.");
     console.log(pwChars);
   } else {
@@ -59,7 +59,7 @@ function writePassword() {
 
   //Set number characters or not
   if (confirm("Use numbers?")) {
-    pwChars += charNum;
+    pwChars = pwChars + charNum;
     alert("Number characters will be added.");
     console.log(pwChars);
   } else {
@@ -74,7 +74,6 @@ function writePassword() {
     for (let i = 0; i <= pwLength; i++) {
 
       pw = pw + pwChars.charAt(
-
         Math.floor(Math.random() * pwChars.length)
       );
     }
